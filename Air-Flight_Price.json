@@ -1,0 +1,605 @@
+{
+    "metadata": {
+        "kernelspec": {
+            "name": "python3",
+            "display_name": "Python 3 (ipykernel)",
+            "language": "python"
+        },
+        "language_info": {
+            "name": "python",
+            "version": "3.8.10",
+            "mimetype": "text/x-python",
+            "codemirror_mode": {
+                "name": "ipython",
+                "version": 3
+            },
+            "pygments_lexer": "ipython3",
+            "nbconvert_exporter": "python",
+            "file_extension": ".py"
+        }
+    },
+    "nbformat_minor": 2,
+    "nbformat": 4,
+    "cells": [
+        {
+            "cell_type": "code",
+            "source": [
+                "pip install numpy"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "d80b93ce-9fcb-4c75-a813-ebea43f4bae0",
+                "language": "python"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "Requirement already satisfied: numpy in c:\\users\\babu.ravichandran\\azuredatastudio-python\\lib\\site-packages (1.24.2)\nNote: you may need to restart the kernel to use updated packages.\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 3
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "pip install seaborn"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "8ee0c078-4a6d-4f35-849b-e869ddc7148c"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "Collecting seaborn\n  Downloading seaborn-0.12.2-py3-none-any.whl (293 kB)\n     ---------------------------------------- 0.0/293.3 kB ? eta -:--:--\n     --------- ----------------------------- 71.7/293.3 kB 1.9 MB/s eta 0:00:01\n     ----------------------------- -------- 225.3/293.3 kB 2.7 MB/s eta 0:00:01\n     -------------------------------------- 293.3/293.3 kB 2.6 MB/s eta 0:00:00\nCollecting matplotlib!=3.6.1,>=3.1\n  Downloading matplotlib-3.7.1-cp38-cp38-win_amd64.whl (7.6 MB)\n     ---------------------------------------- 0.0/7.6 MB ? eta -:--:--\n      --------------------------------------- 0.2/7.6 MB 5.1 MB/s eta 0:00:02\n     -- ------------------------------------- 0.5/7.6 MB 5.2 MB/s eta 0:00:02\n     ---- ----------------------------------- 0.8/7.6 MB 6.2 MB/s eta 0:00:02\n     ----- ---------------------------------- 1.0/7.6 MB 5.2 MB/s eta 0:00:02\n     ----- ---------------------------------- 1.1/7.6 MB 4.9 MB/s eta 0:00:02\n     ------- -------------------------------- 1.4/7.6 MB 5.2 MB/s eta 0:00:02\n     ----------- ---------------------------- 2.1/7.6 MB 6.4 MB/s eta 0:00:01\n     ------------ --------------------------- 2.5/7.6 MB 6.6 MB/s eta 0:00:01\n     -------------- ------------------------- 2.8/7.6 MB 6.5 MB/s eta 0:00:01\n     --------------- ------------------------ 2.9/7.6 MB 6.2 MB/s eta 0:00:01\n     ------------------ --------------------- 3.5/7.6 MB 6.7 MB/s eta 0:00:01\n     -------------------- ------------------- 4.0/7.6 MB 7.1 MB/s eta 0:00:01\n     ---------------------- ----------------- 4.4/7.6 MB 7.1 MB/s eta 0:00:01\n     ------------------------ --------------- 4.6/7.6 MB 7.0 MB/s eta 0:00:01\n     ------------------------- -------------- 4.9/7.6 MB 7.0 MB/s eta 0:00:01\n     --------------------------- ------------ 5.3/7.6 MB 7.1 MB/s eta 0:00:01\n     -------------------------------- ------- 6.2/7.6 MB 7.7 MB/s eta 0:00:01\n     ----------------------------------- ---- 6.9/7.6 MB 8.1 MB/s eta 0:00:01\n     ------------------------------------- -- 7.2/7.6 MB 8.0 MB/s eta 0:00:01\n     ---------------------------------------  7.6/7.6 MB 8.4 MB/s eta 0:00:01\n     ---------------------------------------- 7.6/7.6 MB 8.0 MB/s eta 0:00:00\nRequirement already satisfied: pandas>=0.25 in c:\\users\\babu.ravichandran\\azuredatastudio-python\\lib\\site-packages (from seaborn) (1.5.3)\nRequirement already satisfied: numpy!=1.24.0,>=1.17 in c:\\users\\babu.ravichandran\\azuredatastudio-python\\lib\\site-packages (from seaborn) (1.24.2)\nRequirement already satisfied: importlib-resources>=3.2.0 in c:\\users\\babu.ravichandran\\appdata\\roaming\\python\\python38\\site-packages (from matplotlib!=3.6.1,>=3.1->seaborn) (5.12.0)\nRequirement already satisfied: python-dateutil>=2.7 in c:\\users\\babu.ravichandran\\appdata\\roaming\\python\\python38\\site-packages (from matplotlib!=3.6.1,>=3.1->seaborn) (2.8.2)\nCollecting cycler>=0.10\n  Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)\nCollecting contourpy>=1.0.1\n  Downloading contourpy-1.0.7-cp38-cp38-win_amd64.whl (162 kB)\n     ---------------------------------------- 0.0/163.0 kB ? eta -:--:--\n     -------------------------------------- 163.0/163.0 kB 9.5 MB/s eta 0:00:00\nCollecting fonttools>=4.22.0\n  Downloading fonttools-4.39.2-py3-none-any.whl (1.0 MB)\n     ---------------------------------------- 0.0/1.0 MB ? eta -:--:--\n     -------------------------------- ------- 0.8/1.0 MB 17.4 MB/s eta 0:00:01\n     ---------------------------------------- 1.0/1.0 MB 12.8 MB/s eta 0:00:00\nCollecting kiwisolver>=1.0.1\n  Downloading kiwisolver-1.4.4-cp38-cp38-win_amd64.whl (55 kB)\n     ---------------------------------------- 0.0/55.4 kB ? eta -:--:--\n     ---------------------------------------- 55.4/55.4 kB 2.8 MB/s eta 0:00:00\nRequirement already satisfied: pillow>=6.2.0 in c:\\users\\babu.ravichandran\\azuredatastudio-python\\lib\\site-packages (from matplotlib!=3.6.1,>=3.1->seaborn) (9.4.0)\nCollecting pyparsing>=2.3.1\n  Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)\n     ---------------------------------------- 0.0/98.3 kB ? eta -:--:--\n     ---------------------------------------- 98.3/98.3 kB 5.5 MB/s eta 0:00:00\nRequirement already satisfied: packaging>=20.0 in c:\\users\\babu.ravichandran\\appdata\\roaming\\python\\python38\\site-packages (from matplotlib!=3.6.1,>=3.1->seaborn) (23.0)\nRequirement already satisfied: pytz>=2020.1 in c:\\users\\babu.ravichandran\\azuredatastudio-python\\lib\\site-packages (from pandas>=0.25->seaborn) (2022.7.1)\nRequirement already satisfied: zipp>=3.1.0 in c:\\users\\babu.ravichandran\\appdata\\roaming\\python\\python38\\site-packages (from importlib-resources>=3.2.0->matplotlib!=3.6.1,>=3.1->seaborn) (3.15.0)\nRequirement already satisfied: six>=1.5 in c:\\users\\babu.ravichandran\\appdata\\roaming\\python\\python38\\site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.1->seaborn) (1.16.0)\nInstalling collected packages: pyparsing, kiwisolver, fonttools, cycler, contourpy, matplotlib, seaborn\nSuccessfully installed contourpy-1.0.7 cycler-0.11.0 fonttools-4.39.2 kiwisolver-1.4.4 matplotlib-3.7.1 pyparsing-3.0.9 seaborn-0.12.2\nNote: you may need to restart the kernel to use updated packages.\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 8
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "import numpy as numpy\r\n",
+                "import pandas as pd\r\n",
+                "import seaborn as sns\r\n",
+                "import matplotlib.pyplot as pyplot\r\n",
+                "%matplotlib inline"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "718c4493-befb-461c-ab8c-3abfa01e5844",
+                "tags": []
+            },
+            "outputs": [],
+            "execution_count": 9
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data = pd.read_excel(\"C:/Users/babu.ravichandran/Desktop/Yashwanth/flight_price.xlsx\")"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "f8869095-cf14-499a-83fe-0b389b16243c"
+            },
+            "outputs": [],
+            "execution_count": 11
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(5)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "1248adea-ae2c-4daf-ae58-3df8e4cf08ef"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline Date_of_Journey    Source Destination                  Route  \\\n0       IndiGo      24/03/2019  Banglore   New Delhi              BLR → DEL   \n1    Air India       1/05/2019   Kolkata    Banglore  CCU → IXR → BBI → BLR   \n2  Jet Airways       9/06/2019     Delhi      Cochin  DEL → LKO → BOM → COK   \n3       IndiGo      12/05/2019   Kolkata    Banglore        CCU → NAG → BLR   \n4       IndiGo      01/03/2019  Banglore   New Delhi        BLR → NAG → DEL   \n\n  Dep_Time  Arrival_Time Duration Total_Stops Additional_Info  Price  \n0    22:20  01:10 22 Mar   2h 50m    non-stop         No info   3897  \n1    05:50         13:15   7h 25m     2 stops         No info   7662  \n2    09:25  04:25 10 Jun      19h     2 stops         No info  13882  \n3    18:05         23:30   5h 25m      1 stop         No info   6218  \n4    16:50         21:35   4h 45m      1 stop         No info  13302  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Date_of_Journey</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Dep_Time</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>24/03/2019</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>22:20</td>\n      <td>01:10 22 Mar</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>1/05/2019</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>05:50</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>9/06/2019</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>09:25</td>\n      <td>04:25 10 Jun</td>\n      <td>19h</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>13882</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>12/05/2019</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>18:05</td>\n      <td>23:30</td>\n      <td>5h 25m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>6218</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>01/03/2019</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>16:50</td>\n      <td>21:35</td>\n      <td>4h 45m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>13302</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 12,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 12
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.info()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "269f24a9-c01b-4ff9-8044-4f964db35657"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 10683 entries, 0 to 10682\nData columns (total 11 columns):\n #   Column           Non-Null Count  Dtype \n---  ------           --------------  ----- \n 0   Airline          10683 non-null  object\n 1   Date_of_Journey  10683 non-null  object\n 2   Source           10683 non-null  object\n 3   Destination      10683 non-null  object\n 4   Route            10682 non-null  object\n 5   Dep_Time         10683 non-null  object\n 6   Arrival_Time     10683 non-null  object\n 7   Duration         10683 non-null  object\n 8   Total_Stops      10682 non-null  object\n 9   Additional_Info  10683 non-null  object\n 10  Price            10683 non-null  int64 \ndtypes: int64(1), object(10)\nmemory usage: 918.2+ KB\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 13
+        },
+        {
+            "cell_type": "markdown",
+            "source": [
+                "List of the Airline Providers in the Country"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "e270c235-df45-4932-9b5c-a6da5480c8db"
+            },
+            "attachments": {}
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[\"Airline\"].unique()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "e2d81b1d-7411-4016-9e16-0c6eeaf04a00"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "array(['IndiGo', 'Air India', 'Jet Airways', 'SpiceJet',\n       'Multiple carriers', 'GoAir', 'Vistara', 'Air Asia',\n       'Vistara Premium economy', 'Jet Airways Business',\n       'Multiple carriers Premium economy', 'Trujet'], dtype=object)"
+                    },
+                    "metadata": {},
+                    "execution_count": 14,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 14
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[\"Source\"].unique()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "e989f88c-2992-4350-b4a6-dc130473bf91"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "array(['Banglore', 'Kolkata', 'Delhi', 'Chennai', 'Mumbai'], dtype=object)"
+                    },
+                    "metadata": {},
+                    "execution_count": 17,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 17
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[\"Destination\"].unique()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "aa051ddd-db01-4101-9dd7-5f01ec7ffc13"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "array(['New Delhi', 'Banglore', 'Cochin', 'Kolkata', 'Delhi', 'Hyderabad'],\n      dtype=object)"
+                    },
+                    "metadata": {},
+                    "execution_count": 18,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 18
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Date_of_Journey']=pd.to_datetime(data['Date_of_Journey'],infer_datetime_format=True)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "790acc2f-1b99-4917-a66a-fdae48708451"
+            },
+            "outputs": [],
+            "execution_count": 20
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.info()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "10ab7c84-1821-4272-bd97-362c6107d647"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 10683 entries, 0 to 10682\nData columns (total 11 columns):\n #   Column           Non-Null Count  Dtype         \n---  ------           --------------  -----         \n 0   Airline          10683 non-null  object        \n 1   Date_of_Journey  10683 non-null  datetime64[ns]\n 2   Source           10683 non-null  object        \n 3   Destination      10683 non-null  object        \n 4   Route            10682 non-null  object        \n 5   Dep_Time         10683 non-null  object        \n 6   Arrival_Time     10683 non-null  object        \n 7   Duration         10683 non-null  object        \n 8   Total_Stops      10682 non-null  object        \n 9   Additional_Info  10683 non-null  object        \n 10  Price            10683 non-null  int64         \ndtypes: datetime64[ns](1), int64(1), object(9)\nmemory usage: 918.2+ KB\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 21
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Day']=data['Date_of_Journey'].dt.day\r\n",
+                "data['Month']=data['Date_of_Journey'].dt.month\r\n",
+                "data['Year']=data['Date_of_Journey'].dt.year"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "aa343723-c877-4bf6-9065-48f1e1f575d8"
+            },
+            "outputs": [],
+            "execution_count": 22
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "773b6a79-d453-4ab4-b6c5-997ea0be665c"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline Date_of_Journey    Source Destination                  Route  \\\n0       IndiGo      2019-03-24  Banglore   New Delhi              BLR → DEL   \n1    Air India      2019-05-01   Kolkata    Banglore  CCU → IXR → BBI → BLR   \n2  Jet Airways      2019-06-09     Delhi      Cochin  DEL → LKO → BOM → COK   \n3       IndiGo      2019-05-12   Kolkata    Banglore        CCU → NAG → BLR   \n4       IndiGo      2019-03-01  Banglore   New Delhi        BLR → NAG → DEL   \n\n  Dep_Time  Arrival_Time Duration Total_Stops Additional_Info  Price  Day  \\\n0    22:20  01:10 22 Mar   2h 50m    non-stop         No info   3897   24   \n1    05:50         13:15   7h 25m     2 stops         No info   7662    1   \n2    09:25  04:25 10 Jun      19h     2 stops         No info  13882    9   \n3    18:05         23:30   5h 25m      1 stop         No info   6218   12   \n4    16:50         21:35   4h 45m      1 stop         No info  13302    1   \n\n   Month  Year  \n0      3  2019  \n1      5  2019  \n2      6  2019  \n3      5  2019  \n4      3  2019  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Date_of_Journey</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Dep_Time</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>2019-03-24</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>22:20</td>\n      <td>01:10 22 Mar</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>2019-05-01</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>05:50</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>2019-06-09</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>09:25</td>\n      <td>04:25 10 Jun</td>\n      <td>19h</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>13882</td>\n      <td>9</td>\n      <td>6</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>2019-05-12</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>18:05</td>\n      <td>23:30</td>\n      <td>5h 25m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>6218</td>\n      <td>12</td>\n      <td>5</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>2019-03-01</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>16:50</td>\n      <td>21:35</td>\n      <td>4h 45m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>13302</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2019</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 23,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 23
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.drop(\"Date_of_Journey\",axis = 1, inplace = True)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "3d54b521-43d1-453a-8c25-f43338db8a6d"
+            },
+            "outputs": [],
+            "execution_count": 24
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "55668083-32c8-4ece-9035-5947a654c65b"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline    Source Destination                  Route Dep_Time  \\\n0       IndiGo  Banglore   New Delhi              BLR → DEL    22:20   \n1    Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR    05:50   \n2  Jet Airways     Delhi      Cochin  DEL → LKO → BOM → COK    09:25   \n3       IndiGo   Kolkata    Banglore        CCU → NAG → BLR    18:05   \n4       IndiGo  Banglore   New Delhi        BLR → NAG → DEL    16:50   \n\n   Arrival_Time Duration Total_Stops Additional_Info  Price  Day  Month  Year  \n0  01:10 22 Mar   2h 50m    non-stop         No info   3897   24      3  2019  \n1         13:15   7h 25m     2 stops         No info   7662    1      5  2019  \n2  04:25 10 Jun      19h     2 stops         No info  13882    9      6  2019  \n3         23:30   5h 25m      1 stop         No info   6218   12      5  2019  \n4         21:35   4h 45m      1 stop         No info  13302    1      3  2019  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Dep_Time</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>22:20</td>\n      <td>01:10 22 Mar</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>05:50</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>09:25</td>\n      <td>04:25 10 Jun</td>\n      <td>19h</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>13882</td>\n      <td>9</td>\n      <td>6</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>18:05</td>\n      <td>23:30</td>\n      <td>5h 25m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>6218</td>\n      <td>12</td>\n      <td>5</td>\n      <td>2019</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>16:50</td>\n      <td>21:35</td>\n      <td>4h 45m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>13302</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2019</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 25,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 25
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Dept_Hour']=data['Dep_Time'].str.split(':').str[0]\r\n",
+                "data['Dept_Min']=data['Dep_Time'].str.split(':').str[1]\r\n",
+                "data.drop('Dep_Time',axis=1,inplace=True)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "15fe8f22-613d-4614-8994-7bcf4fc69417"
+            },
+            "outputs": [],
+            "execution_count": 26
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(2)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "29ffd2cd-4d77-4a8c-b9e3-057b132f07be"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "     Airline    Source Destination                  Route  Arrival_Time  \\\n0     IndiGo  Banglore   New Delhi              BLR → DEL  01:10 22 Mar   \n1  Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR         13:15   \n\n  Duration Total_Stops Additional_Info  Price  Day  Month  Year Dept_Hour  \\\n0   2h 50m    non-stop         No info   3897   24      3  2019        22   \n1   7h 25m     2 stops         No info   7662    1      5  2019        05   \n\n  Dept_Min  \n0       20  \n1       50  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>01:10 22 Mar</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>22</td>\n      <td>20</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>05</td>\n      <td>50</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 27,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 27
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.info()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "498ddde8-19f2-401d-975b-4b59c0688327"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 10683 entries, 0 to 10682\nData columns (total 14 columns):\n #   Column           Non-Null Count  Dtype \n---  ------           --------------  ----- \n 0   Airline          10683 non-null  object\n 1   Source           10683 non-null  object\n 2   Destination      10683 non-null  object\n 3   Route            10682 non-null  object\n 4   Arrival_Time     10683 non-null  object\n 5   Duration         10683 non-null  object\n 6   Total_Stops      10682 non-null  object\n 7   Additional_Info  10683 non-null  object\n 8   Price            10683 non-null  int64 \n 9   Day              10683 non-null  int64 \n 10  Month            10683 non-null  int64 \n 11  Year             10683 non-null  int64 \n 12  Dept_Hour        10683 non-null  object\n 13  Dept_Min         10683 non-null  object\ndtypes: int64(4), object(10)\nmemory usage: 1.1+ MB\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 28
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Dept_Hour']=data['Dept_Hour'].astype(int)\r\n",
+                "data['Dept_Min']=data['Dept_Min'].astype(int)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "1a086026-850a-400d-8172-5b9ac09d0663"
+            },
+            "outputs": [],
+            "execution_count": 29
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.info()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "b0016923-d7c3-4414-9816-6c3b8fad0f04"
+            },
+            "outputs": [
+                {
+                    "name": "stdout",
+                    "text": "<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 10683 entries, 0 to 10682\nData columns (total 14 columns):\n #   Column           Non-Null Count  Dtype \n---  ------           --------------  ----- \n 0   Airline          10683 non-null  object\n 1   Source           10683 non-null  object\n 2   Destination      10683 non-null  object\n 3   Route            10682 non-null  object\n 4   Arrival_Time     10683 non-null  object\n 5   Duration         10683 non-null  object\n 6   Total_Stops      10682 non-null  object\n 7   Additional_Info  10683 non-null  object\n 8   Price            10683 non-null  int64 \n 9   Day              10683 non-null  int64 \n 10  Month            10683 non-null  int64 \n 11  Year             10683 non-null  int64 \n 12  Dept_Hour        10683 non-null  int32 \n 13  Dept_Min         10683 non-null  int32 \ndtypes: int32(2), int64(4), object(8)\nmemory usage: 1.1+ MB\n",
+                    "output_type": "stream"
+                }
+            ],
+            "execution_count": 31
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Arrival_Time']=data['Arrival_Time'].apply(lambda x: x.split(' ')[0])"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "00baac89-95e5-434e-a1dc-b3fa8fa88dd2"
+            },
+            "outputs": [],
+            "execution_count": 32
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(5)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "167a8298-36b2-4f3e-a644-bb06e91efd04"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline    Source Destination                  Route Arrival_Time  \\\n0       IndiGo  Banglore   New Delhi              BLR → DEL        01:10   \n1    Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR        13:15   \n2  Jet Airways     Delhi      Cochin  DEL → LKO → BOM → COK        04:25   \n3       IndiGo   Kolkata    Banglore        CCU → NAG → BLR        23:30   \n4       IndiGo  Banglore   New Delhi        BLR → NAG → DEL        21:35   \n\n  Duration Total_Stops Additional_Info  Price  Day  Month  Year  Dept_Hour  \\\n0   2h 50m    non-stop         No info   3897   24      3  2019         22   \n1   7h 25m     2 stops         No info   7662    1      5  2019          5   \n2      19h     2 stops         No info  13882    9      6  2019          9   \n3   5h 25m      1 stop         No info   6218   12      5  2019         18   \n4   4h 45m      1 stop         No info  13302    1      3  2019         16   \n\n   Dept_Min  \n0        20  \n1        50  \n2        25  \n3         5  \n4        50  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>01:10</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>22</td>\n      <td>20</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>5</td>\n      <td>50</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>04:25</td>\n      <td>19h</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>13882</td>\n      <td>9</td>\n      <td>6</td>\n      <td>2019</td>\n      <td>9</td>\n      <td>25</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>23:30</td>\n      <td>5h 25m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>6218</td>\n      <td>12</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>18</td>\n      <td>5</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>21:35</td>\n      <td>4h 45m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>13302</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>16</td>\n      <td>50</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 33,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 33
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Arrival_hour']=data['Arrival_Time'].str.split(':').str[0]\r\n",
+                "data['Arrival_min']=data['Arrival_Time'].str.split(':').str[1]"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "19257720-c248-499c-9699-733a07b42f43",
+                "tags": []
+            },
+            "outputs": [],
+            "execution_count": 34
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Arrival_hour']=data['Arrival_hour'].astype(int)\r\n",
+                "data['Arrival_min']=data['Arrival_min'].astype(int)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "9a97c584-0997-4852-befd-dc28f4db5970",
+                "tags": []
+            },
+            "outputs": [],
+            "execution_count": 37
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(5)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "1d8e81a5-522e-47c3-bbce-cb07b9053368"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline    Source Destination                  Route Arrival_Time  \\\n0       IndiGo  Banglore   New Delhi              BLR → DEL        01:10   \n1    Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR        13:15   \n2  Jet Airways     Delhi      Cochin  DEL → LKO → BOM → COK        04:25   \n3       IndiGo   Kolkata    Banglore        CCU → NAG → BLR        23:30   \n4       IndiGo  Banglore   New Delhi        BLR → NAG → DEL        21:35   \n\n  Duration Total_Stops Additional_Info  Price  Day  Month  Year  Dept_Hour  \\\n0   2h 50m    non-stop         No info   3897   24      3  2019         22   \n1   7h 25m     2 stops         No info   7662    1      5  2019          5   \n2      19h     2 stops         No info  13882    9      6  2019          9   \n3   5h 25m      1 stop         No info   6218   12      5  2019         18   \n4   4h 45m      1 stop         No info  13302    1      3  2019         16   \n\n   Dept_Min  Arrival_hour  Arrival_min  \n0        20             1           10  \n1        50            13           15  \n2        25             4           25  \n3         5            23           30  \n4        50            21           35  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Arrival_Time</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n      <th>Arrival_hour</th>\n      <th>Arrival_min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>01:10</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>22</td>\n      <td>20</td>\n      <td>1</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>13:15</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>5</td>\n      <td>50</td>\n      <td>13</td>\n      <td>15</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>04:25</td>\n      <td>19h</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>13882</td>\n      <td>9</td>\n      <td>6</td>\n      <td>2019</td>\n      <td>9</td>\n      <td>25</td>\n      <td>4</td>\n      <td>25</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>23:30</td>\n      <td>5h 25m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>6218</td>\n      <td>12</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>18</td>\n      <td>5</td>\n      <td>23</td>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>21:35</td>\n      <td>4h 45m</td>\n      <td>1 stop</td>\n      <td>No info</td>\n      <td>13302</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>16</td>\n      <td>50</td>\n      <td>21</td>\n      <td>35</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 38,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 38
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.drop('Arrival_Time',axis=1, inplace=True)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "fe605a7c-9aca-4c8a-b1fa-8fb8fc7e1410"
+            },
+            "outputs": [],
+            "execution_count": 39
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(2)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "6c8844bd-c78d-41c7-83ea-6e6517f6e9c8"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "     Airline    Source Destination                  Route Duration  \\\n0     IndiGo  Banglore   New Delhi              BLR → DEL   2h 50m   \n1  Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR   7h 25m   \n\n  Total_Stops Additional_Info  Price  Day  Month  Year  Dept_Hour  Dept_Min  \\\n0    non-stop         No info   3897   24      3  2019         22        20   \n1     2 stops         No info   7662    1      5  2019          5        50   \n\n   Arrival_hour  Arrival_min  \n0             1           10  \n1            13           15  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n      <th>Arrival_hour</th>\n      <th>Arrival_min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>2h 50m</td>\n      <td>non-stop</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>22</td>\n      <td>20</td>\n      <td>1</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>7h 25m</td>\n      <td>2 stops</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>5</td>\n      <td>50</td>\n      <td>13</td>\n      <td>15</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 40,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 40
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[\"Total_Stops\"].unique()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "64489e65-d382-4ade-9d34-5f8d1cd63fe2"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "array(['non-stop', '2 stops', '1 stop', '3 stops', nan, '4 stops'],\n      dtype=object)"
+                    },
+                    "metadata": {},
+                    "execution_count": 41,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 41
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[\"Total_Stops\"].value_counts()"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "1318b206-90dd-46bf-9390-93b2fc2db204"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "1 stop      5625\nnon-stop    3491\n2 stops     1520\n3 stops       45\n4 stops        1\nName: Total_Stops, dtype: int64"
+                    },
+                    "metadata": {},
+                    "execution_count": 42,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 42
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data[data['Total_Stops'].isnull()]"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "c75b313b-66f1-4cd5-9908-4fe403be1401"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "        Airline Source Destination Route Duration Total_Stops Additional_Info  \\\n9039  Air India  Delhi      Cochin   NaN  23h 40m         NaN         No info   \n\n      Price  Day  Month  Year  Dept_Hour  Dept_Min  Arrival_hour  Arrival_min  \n9039   7480    6      5  2019          9        45             9           25  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n      <th>Arrival_hour</th>\n      <th>Arrival_min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>9039</th>\n      <td>Air India</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>NaN</td>\n      <td>23h 40m</td>\n      <td>NaN</td>\n      <td>No info</td>\n      <td>7480</td>\n      <td>6</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>9</td>\n      <td>45</td>\n      <td>9</td>\n      <td>25</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 43,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 43
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data['Total_Stops']=data['Total_Stops'].map({'non-stop':0,'1 stop':1,'2 stops':2,'3 stops':3,'4 stops':4,'nan':1})"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "afec1062-9027-4640-a611-25b061060f6b"
+            },
+            "outputs": [],
+            "execution_count": 44
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "data.head(5)"
+            ],
+            "metadata": {
+                "language": "python",
+                "azdata_cell_guid": "89751d44-2ac6-4b86-951c-b692ebdd37dc"
+            },
+            "outputs": [
+                {
+                    "data": {
+                        "text/plain": "       Airline    Source Destination                  Route Duration  \\\n0       IndiGo  Banglore   New Delhi              BLR → DEL   2h 50m   \n1    Air India   Kolkata    Banglore  CCU → IXR → BBI → BLR   7h 25m   \n2  Jet Airways     Delhi      Cochin  DEL → LKO → BOM → COK      19h   \n3       IndiGo   Kolkata    Banglore        CCU → NAG → BLR   5h 25m   \n4       IndiGo  Banglore   New Delhi        BLR → NAG → DEL   4h 45m   \n\n   Total_Stops Additional_Info  Price  Day  Month  Year  Dept_Hour  Dept_Min  \\\n0          0.0         No info   3897   24      3  2019         22        20   \n1          2.0         No info   7662    1      5  2019          5        50   \n2          2.0         No info  13882    9      6  2019          9        25   \n3          1.0         No info   6218   12      5  2019         18         5   \n4          1.0         No info  13302    1      3  2019         16        50   \n\n   Arrival_hour  Arrival_min  \n0             1           10  \n1            13           15  \n2             4           25  \n3            23           30  \n4            21           35  ",
+                        "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Airline</th>\n      <th>Source</th>\n      <th>Destination</th>\n      <th>Route</th>\n      <th>Duration</th>\n      <th>Total_Stops</th>\n      <th>Additional_Info</th>\n      <th>Price</th>\n      <th>Day</th>\n      <th>Month</th>\n      <th>Year</th>\n      <th>Dept_Hour</th>\n      <th>Dept_Min</th>\n      <th>Arrival_hour</th>\n      <th>Arrival_min</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → DEL</td>\n      <td>2h 50m</td>\n      <td>0.0</td>\n      <td>No info</td>\n      <td>3897</td>\n      <td>24</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>22</td>\n      <td>20</td>\n      <td>1</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>Air India</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → IXR → BBI → BLR</td>\n      <td>7h 25m</td>\n      <td>2.0</td>\n      <td>No info</td>\n      <td>7662</td>\n      <td>1</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>5</td>\n      <td>50</td>\n      <td>13</td>\n      <td>15</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>Jet Airways</td>\n      <td>Delhi</td>\n      <td>Cochin</td>\n      <td>DEL → LKO → BOM → COK</td>\n      <td>19h</td>\n      <td>2.0</td>\n      <td>No info</td>\n      <td>13882</td>\n      <td>9</td>\n      <td>6</td>\n      <td>2019</td>\n      <td>9</td>\n      <td>25</td>\n      <td>4</td>\n      <td>25</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>IndiGo</td>\n      <td>Kolkata</td>\n      <td>Banglore</td>\n      <td>CCU → NAG → BLR</td>\n      <td>5h 25m</td>\n      <td>1.0</td>\n      <td>No info</td>\n      <td>6218</td>\n      <td>12</td>\n      <td>5</td>\n      <td>2019</td>\n      <td>18</td>\n      <td>5</td>\n      <td>23</td>\n      <td>30</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>IndiGo</td>\n      <td>Banglore</td>\n      <td>New Delhi</td>\n      <td>BLR → NAG → DEL</td>\n      <td>4h 45m</td>\n      <td>1.0</td>\n      <td>No info</td>\n      <td>13302</td>\n      <td>1</td>\n      <td>3</td>\n      <td>2019</td>\n      <td>16</td>\n      <td>50</td>\n      <td>21</td>\n      <td>35</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+                    },
+                    "metadata": {},
+                    "execution_count": 45,
+                    "output_type": "execute_result"
+                }
+            ],
+            "execution_count": 45
+        }
+    ]
+}
